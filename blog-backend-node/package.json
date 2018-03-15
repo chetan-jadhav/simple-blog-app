@@ -1,0 +1,33 @@
+{
+  "name": "blog-backend",
+  "version": "1.0.0",
+  "description": "Backend server for blog application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "blog",
+    "api",
+    "rest-api",
+    "backend-server"
+  ],
+  "author": "Chetan Jadhav",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.17.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "helmet": "^3.11.0",
+    "morgan": "^1.9.0",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.35.1",
+    "sequelize-cli": "^4.0.0"
+  }
+}
