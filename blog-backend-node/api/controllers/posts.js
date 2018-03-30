@@ -1,22 +1,23 @@
-'user strict';
-var Post = require('../models').Post;
-var Comment = require('../models').Comment;
+'use strict';
+
+var models = require('../models/index');
 
 exports.list = function(req, res) {
-  console.log("Get Posts");
-  return Post
+  return models.Post
     .findAll({ include: [{
-        model: Comment
+        model: models.Comment,
+        as: 'comments'
       }],
     })
     .then(posts => res.status(200).send(posts))
-    .catch(error => res.status(400).send(error))
+    .catch(error => {
+      console.dir(error)
+      res.status(400).send(error)
+    })
 }
 
 exports.create = function(req, res) {
-  console.log("Post", Post);
-  console.log("Comment", Comment);
-  return Post
+  return models.Post
     .create(req.body)
     .then(post => res.status(201).send(post))
     .catch(error => res.status(400).send(error));
