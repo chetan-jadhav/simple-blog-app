@@ -24,7 +24,7 @@ exports.create = function(req, res) {
 }
 
 exports.show = function(req, res) {
-  return Post
+  return models.Post
     .findById(req.params.postId, {
       include: [{
         model: Comment
@@ -42,7 +42,7 @@ exports.show = function(req, res) {
 }
 
 exports.update = function(req, res) {
-  return Post
+  return models.Post
     .findById(req.params.postId, {
       include: [{
         model: Comment,
@@ -64,7 +64,7 @@ exports.update = function(req, res) {
 }
 
 exports.delete = function(req, res) {
-  return Post
+  return models.Post
     .findById(req.params.postId, {
       include: [{
         model: Comment,
