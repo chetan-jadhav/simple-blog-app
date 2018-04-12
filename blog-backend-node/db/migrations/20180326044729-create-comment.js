@@ -4,7 +4,7 @@ module.exports = {
     return queryInterface.createTable('comments', {
       id: {
         type: Sequelize.UUID,
-        primaryKey: true,        
+        primaryKey: true,
         defaultValue: Sequelize.literal('uuid_generate_v4()')
       },
       name: {
@@ -19,6 +19,11 @@ module.exports = {
           model: 'posts',
           key: 'id'
         }
+      },
+      status: {
+        type: Sequelize.ENUM('active', 'deleted'),
+        allowNull: false,
+        defaultValue: 'active'
       },
       createdAt: {
         allowNull: false,

@@ -17,7 +17,8 @@ module.exports = {
       },
       status: {
         type: Sequelize.ENUM('published', 'draft', 'deleted'),
-        allowNull: false
+        allowNull: false,
+        defaultValue: 'draft'
       },
       createdAt: {
         allowNull: false,

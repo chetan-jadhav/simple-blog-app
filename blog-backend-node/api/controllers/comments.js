@@ -49,7 +49,7 @@ exports.update = function(req, res){
       }
       return comment
         .update(req.body)
-        .then(() => res.status(200).send(post))
+        .then(() => res.status(200).send(comment))
         .catch((error) => res.status(400).send(error))
     })
     .catch((error) => res.status(400).send(error))
@@ -66,7 +66,7 @@ exports.destroy = function(req, res){
       }
       return comment
         .update({status: 'deleted'})
-        .then(() => res.status(200).send(post))
+        .then(() => res.status(200).send(comment))
         .catch((error) => res.status(400).send(error))
     })
     .catch((error) => res.status(400).send(error))

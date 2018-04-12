@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   var Comment = sequelize.define('Comment', {
     name: DataTypes.STRING,
     comment: DataTypes.TEXT,
+    status: DataTypes.ENUM('active', 'deleted'),
     post_id: DataTypes.UUID
   }, {
     tableName: 'comments'

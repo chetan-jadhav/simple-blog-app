@@ -10,8 +10,7 @@ exports.list = function(req, res) {
       }],
     })
     .then(posts => res.status(200).send(posts))
-    .catch(error => {
-      console.dir(error)
+    .catch(error => {      
       res.status(400).send(error)
     })
 }
@@ -27,7 +26,8 @@ exports.show = function(req, res) {
   return models.Post
     .findById(req.params.postId, {
       include: [{
-        model: Comment
+        model: models.Comment,
+        as: 'comments'
       }]
     })
     .then(post => {
@@ -43,12 +43,7 @@ exports.show = function(req, res) {
 
 exports.update = function(req, res) {
   return models.Post
-    .findById(req.params.postId, {
-      include: [{
-        model: Comment,
-        as: 'comments'
-      }],
-    })
+    .findById(req.params.postId)
     .then(post => {
       if(!post){
         return res.status(404).send({
@@ -65,13 +60,9 @@ exports.update = function(req, res) {
 
 exports.delete = function(req, res) {
   return models.Post
-    .findById(req.params.postId, {
-      include: [{
-        model: Comment,
-        as: 'comments'
-      }],
-    })
+    .findById(req.params.postId)
     .then(post => {
+      // console.log("post", post);
       if(!post){
         return res.status(404).send({
           message: 'Post not found!'
